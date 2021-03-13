@@ -2,7 +2,7 @@
 
 *TODO:* Write a short introduction to your project.
 
-The primary objective is to develop an early warning system, i.e. binary classification failed (`'Target'`==1) vs. surviving (`'Target'`==0), for regulated banks using their quarterly filings with the FDIC. There was a significant increase in the number of failing banks from 2009 to 2014.  Overall, 137 failed banks and 6,877 surviving banks were used for the modeling. Historical data from the first 8 quarters ending 2010Q3 (`./data`) is used to train the model and out-of-sample testing is performed on quarterly data starting from 2012Q4 (`./oos`).  For more information on methodology please view `CAMELS.md` file included in the repository.
+The primary objective is to develop an early warning system, i.e. binary classification of failed (`'Target'==1`) vs. surviving (`'Target'==0`), for regulated banks using their quarterly filings with the FDIC. There was a significant increase in the number of failed banks from 2009 to 2014 what produced enough data for the classification.  Overall, 137 failed banks and 6,877 surviving banks were used in this machine learning exercise. Historical data from the first 8 quarters ending 2010Q3 (`./data`) is used to tune the model and out-of-sample testing is performed on quarterly data starting from 2012Q4 (`./oos`).  For more information on methodology please refer to `CAMELS.md` file included in the repository.
 
 ## Project Set Up and Installation
 *OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
@@ -18,11 +18,11 @@ Approximately 2,000 preliminary features were obtained for every bank instance f
 ### Task
 *TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
 
-Selected financial ratios were used to produce unique risk profiles according to CAMELS valuation framework. This framework is used to assess performance along 6 risk dimensions, namely Capital, Assets, Management, Earnings, Liquidity, and Sensitivity to market risk, hence the abbreviation. It was assumed that a failing bank will exceed its risk capacity along several diminsion and eventually would face a liquidity crises. For more information about CAMELS framework please visit https://en.wikipedia.org/wiki/CAMELS_rating_system
+Selected financial ratios were used to produce unique risk profiles according to CAMELS valuation framework. This framework is used to assess performance along 6 risk dimensions, namely Capital, Assets, Management, Earnings, Liquidity, and Sensitivity to market risk. It was assumed that a failed bank will exceed its risk capacity along several diminsion and eventually would face a liquidity crises. For more information about CAMELS framework please visit https://en.wikipedia.org/wiki/CAMELS_rating_system
 
-Financial metrics recorded in the last reports of the failing banks should  have a predictive power that is needed to forecast future failures. Due to significant class imbalances and taking into account costs accosiated with financial distress, the model should aim to maximize recall score. In other words, accuracy is probably not the best metrics, as Type II error needs to be minimized.
+Financial metrics recorded in the last reports of the failed banks should have predictive power that is needed to forecast future failures. Due to significant class imbalances and taking into account costs accosiated with financial distress, the model should aim to maximize the recall score. In other words, accuracy is probably not the best metrics, as Type II error needs to be minimized.
 
-Benchmark model was created in order to better understand the requirements. Sklearn `traing-test-split` was used with `StandardScaler` to prepare for Gradient Boosting tree-based `GridSearch`, optimizing for recall. The resulting model performed reasonably well on the testing dataset with AUC of 0.97. Out-of-sample results were also very promising as recall scores  were ranging from 0.76 to 1. 
+Basic benchmark model was created in order to better understand the requirements. Sklearn `traing-test-split` was used with `StandardScaler` to prepare for Gradient Boosting tree-based `GridSearch`, optimizing for recall. The resulting model performed reasonably well on the testing dataset with AUC of 0.97. Out-of-sample results were also very promising as recall scores  were ranging from 0.76 to 1. 
 
 ### Access
 *TODO*: Explain how you are accessing the data in your workspace.
