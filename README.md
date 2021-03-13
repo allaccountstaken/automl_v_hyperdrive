@@ -2,7 +2,7 @@
 
 *TODO:* Write a short introduction to your project.
 
-The primary objective is to develop an early warning system, i.e. binary classification failed (1) vs. healthy (0), for regulated banks using their quarterly filings with the FDIC. There was a significant increase in the number of failing banks during from 2009 and 2012. Historical data from the first 8 quarters ending 2010Q3 (`./data`) is used to train the model and out-of-sample testing is performed on quarterly data ending 2012Q4 (`./oos`). Overall, 137 failed banks and 6,877 surviving banks were used for then modeling. For more information on methodology please view `CAMELS.md` file included in the repository.
+The primary objective is to develop an early warning system, i.e. binary classification failed (1) vs. healthy (0), for regulated banks using their quarterly filings with the FDIC. There was a significant increase in the number of failing banks during from 2009 and 2014.  Overall, 137 failed banks and 6,877 surviving banks were used for then modeling.Historical data from the first 8 quarters ending 2010Q3 (`./data`) is used to train the model and out-of-sample testing is performed on quarterly data starting from 2012Q4 (`./oos`).  For more information on methodology please view `CAMELS.md` file included in the repository.
 
 ## Project Set Up and Installation
 *OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
