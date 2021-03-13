@@ -1,4 +1,4 @@
-# Banks Early Warning System
+# Banks Classification
 
 *TODO:* Write a short introduction to your project.
 
