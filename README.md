@@ -1,8 +1,8 @@
-# Banks Classification 
+# Banks Early Warning System
 
 *TODO:* Write a short introduction to your project.
 
-The primary objective is to develop an early warning system, i.e. binary classification of failed (`'Target'==1`) vs. surviving (`'Target'==0`), for regulated banks using their quarterly filings with the FDIC. There was a significant increase in the number of failed banks from 2009 to 2014 what produced enough data for the classification.  Overall, 137 failed banks and 6,877 surviving banks were used in this machine learning exercise. Historical data from the first 8 quarters ending 2010Q3 (`./data`) is used to tune the model and out-of-sample testing is performed on quarterly data starting from 2012Q4 (`./oos`).  For more information on methodology please refer to `CAMELS.md` file included in the repository.
+The primary objective is to develop an early warning system, i.e. binary classification of failed (`'Target'==1`) vs. survived (`'Target'==0`), for US banks using their quarterly filings with the regulator. There was a significant increase in the number of failed banks from 2009 to 2014 what produced enough data for the classification.  Overall, 137 failed banks and 6,877 surviving banks were used in this machine learning exercise. Historical observations from the first 4 quarters ending 2010Q3 (`./data`) are used to tune the model and out-of-sample testing is performed on quarterly data starting from 2012Q4 (`./oos`).  For more information on methodology please refer to `CAMELS.md` file included in the repository.
 
 ## Project Set Up and Installation
 *OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
