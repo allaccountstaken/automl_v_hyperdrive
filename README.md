@@ -12,13 +12,13 @@ The primary objective is to develop an early warning system, i.e. binary classif
 ### Overview
 *TODO*: Explain about the data you are using and where you got it from.
 
-Approximately 2,000 preliminary features were obtained for every bank instance from "Report of Condition and Income" (CALL report) using publicly available SOAP APIs. Eventually, only 14 financial metrics were used for the actual classification. For more information about CALL reports please visit https://www.investopedia.com/terms/c/callreport.asp
+Approximately 2,000 preliminary features were obtained for every bank instance from "Report of Condition and Income" (CALL report) using publicly available SOAP APIs. Eventually, only 14 financial metrics were used for the actual classification. For more information about CALL reports please visit the regulator's website at https://cdr.ffiec.gov/public/ManageFacsimiles.aspx. More user friendly description is available here: https://www.investopedia.com/terms/c/callreport.asp
 
 
 ### Task
 *TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
 
-Selected financial ratios were used to produce unique risk profiles according to CAMELS valuation framework. This framework is used to assess performance along 6 risk dimensions, namely Capital, Assets, Management, Earnings, Liquidity, and Sensitivity to market risk. It was assumed that a failed bank will exceed its risk capacity along several diminsion and eventually would face a liquidity crises. For more information about CAMELS framework please visit https://en.wikipedia.org/wiki/CAMELS_rating_system
+Selected financial ratios were used to produce unique risk profiles according to CAMELS valuation framework, that is explaind in detail in suplemental `CAMELS.md`. This framework is used to assess performance along 6 risk dimensions, namely Capital, Assets, Management, Earnings, Liquidity, and Sensitivity to market risk. It was assumed that a failed bank will exceed its risk capacity along several diminsion and eventually would face a liquidity crises. For more information about CAMELS framework please visit the regulator's resource here https://www.fdic.gov/deposit/insurance/assessments/risk.html or an unofficial explanation here https://en.wikipedia.org/wiki/CAMELS_rating_system
 
 Financial metrics recorded in the last reports of the failed banks should have predictive power that is needed to forecast future failures. Due to significant class imbalances and taking into account costs accosiated with financial distress, the model should aim to maximize the recall score. In other words, accuracy is probably not the best metrics, as Type II error needs to be minimized.
 
@@ -27,11 +27,11 @@ Basic benchmark model was created in order to better understand the requirements
 ### Access
 *TODO*: Explain how you are accessing the data in your workspace.
 
-Training data with respective CAMELS features is stored in CSV format `'data/camel_data_after2010Q3.csv'` and is uploaded to Azure storage to be accessed with `dataset = ws.datasets['camels']`. 
+Training data with respective CAMELS features was stored in CSV format `'data/camel_data_after2010Q3.csv'` and uploaded to Azure storage to be accessed with `dataset = ws.datasets['camels']`. 
 
-The data from last reports of failed banks is collected for 4 preceeding quarters as noted in `'AsOfDate'` column. All healthy or surviving banks are taken as of 2010Q3. This means that the failed banks are represented by a panel dataset with observations from diffirent quarters. For example, if failed Bank A submitted its last report in 2010Q1 and another failed Bank B submitted its last report in 2010Q2, both banks will appear in the training dataset. Healthy Bank C could have submitted reports in Q1 and Q2 as well, but only features as of 2010Q3 will be used for trianing, as it survived after 2010Q3 reporting cycle. This important choice was neccessary in order to partially mitigate imballanced classes.
+The data from last reports of failed banks is collected for 4 preceeding quarters prior to 2010Q3 as noted in `'AsOfDate'` column. All healthy or surviving banks are taken as of 2010Q3 quarter-end. This means that the failed banks are represented by a panel dataset with observations from diffirent quarters. For example, if failed Bank A submitted its last report in 2010Q1 and another failed Bank B submitted its last report in 2010Q2, both banks will appear in the training dataset. Healthy Bank C could have submitted reports in Q1 and Q2 as well, but only features as of 2010Q3 will be used for trianing, as it survived after 2010Q3 reporting cycle. This important choice was neccessary in order to partially mitigate imballanced classes.
 
-Out-of-sample data covers 9 quarters starting in 2010Q4 and contains reports submitted by failing and surviving banks as of quarter end. Obviously, failed banks will not appear in the next quarterly reporting cycle, but not all missing banks are automatically failed banks. There are numerous reasons why reports can be missing, for example consolidation, change of charter or mergers and acquisitions. These out-of-sample datasets are stored in respective CSV files, for example `'oos/camel_data_after2010Q4_OOS.csv'` contains CAMELS features reported by all the banks in Q4 of 2010.
+Out-of-sample testing data covers 9 quarters starting in 2010Q4 and contains reports submitted by failing and surviving banks as of respective quarter-end. Obviously, failed banks will not appear in the next quarterly reporting cycle, but not all missing banks are automatically recorded as failed banks. There are numerous reasons why reports can dissaper from the sample, for example consolidation, change of charter or mergers and acquisitions. These out-of-sample quarterly datasets are stored in respective CSV files, for example `'oos/camel_data_after2010Q4_OOS.csv'` contains CAMELS features reported by all existing banks in Q4 of 2010.
 
  
 
