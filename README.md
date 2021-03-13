@@ -1,4 +1,4 @@
-# Banks Classification
+# Early Warning Financial Distress Classification System
 
 *TODO:* Write a short introduction to your project.
 
