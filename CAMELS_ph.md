@@ -1,48 +1,40 @@
-*NOTE:* This file is a template that you can use to create the README for your project. The *TODO* comments below will highlight the information you should be sure to include.
+# CAMELS risk profiles
+Note: this research presents preliminary findings and is being distributed to interested readers solely to stimulate discussion and elicit comments. 
 
-# Your Project Title Here
+## "Report of Condition and Income" (CALL report)
+Approximately 2,000 original  features were obtained for every bank instance from "Report of Condition and Income" (CALL report, example report is stored here `'data/CALL_175458.PDF'`) using publicly available SOAP APIs on https://banks.data.fdic.gov/docs/. Eventually, only 14 financial metrics were used for the actual classification:
 
-*TODO:* Write a short introduction to your project.
+![]()
 
-## Project Set Up and Installation
-*OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
+### Surviving banks
+Distribution of selected financial ratios of surviving banks:
 
-## Dataset
+![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/strong_financials.png)
 
-### Overview
-*TODO*: Explain about the data you are using and where you got it from.
+### Failed banks
+Distribution of selected financial ratios of failed banks:
 
-### Task
-*TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
+![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/weak_financials.png)
 
-### Access
-*TODO*: Explain how you are accessing the data in your workspace.
+## CAMELS framework
+Although there was a lot of intra-class variability, these ratios were successfully used to produce comparable risk profiles according to CAMELS valuation framework. 
 
-## Automated ML
-*TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
+### Featurization 
+![]()
 
-### Results
-*TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
+The framework aims to assess performance along 6 risk dimensions, namely Capital, Assets, Management, Earnings, Liquidity, and Sensitivity to market risk. 
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/single_CAMELS.png)
 
-## Hyperparameter Tuning
-*TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
+### Weak profile
+It was assumed that a failed bank will exceed its risk capacity along several dimensions and eventually would face a liquidity crises. For example, first (1) deteriorating asset quality will lead to (2) negative earnings. This will pierce capacity on (3) capital dimension and the bank may face (4) liquidity crisis. Below is multi-period evolution of a model failed bank.
+
+![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/weak_CAMELS.png)
+
+### Strong profile
+Healthy banks manage to maintain their risk profile within the contour of their risk capacity at all times. Below is multi-period evolution of a model stressed but surviving bank.
+
+![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/strong_CAMELS.png)
 
 
-### Results
-*TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
-
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
-
-## Model Deployment
-*TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
-
-## Screen Recording
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
-- A working model
-- Demo of the deployed  model
-- Demo of a sample request sent to the endpoint and its response
-
-## Standout Suggestions
-*TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
+For more information about CAMELS framework please visit the regulator's resource here https://www.fdic.gov/deposit/insurance/assessments/risk.html or an unofficial explanation here https://en.wikipedia.org/wiki/CAMELS_rating_system.
