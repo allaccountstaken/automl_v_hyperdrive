@@ -2,7 +2,15 @@
 
 *TODO:* Write a short introduction to your project.
 
-The primary objective is to develop an early warning system, i.e. binary classification of failed (`'Target'==1`) vs. survived (`'Target'==0`), for US banks using their quarterly filings with the regulator. There was a significant increase in the number of failed banks from 2009 to 2014 what produced enough data for the classification.  Overall, 137 failed banks and 6,877 surviving banks were used in this machine learning exercise. Historical observations from the first 4 quarters ending 2010Q3 (`./data`) are used to tune the model and out-of-sample testing is performed on quarterly data starting from 2012Q4 (`./oos`).  For more information on methodology please refer to `CAMELS.md` file included in the repository.
+The primary objective is to develop an early warning system, i.e. binary classification of failed (`'Target'==1`) vs. survived (`'Target'==0`), for US banks using their quarterly filings with the regulator. 
+
+In normal, non-stressed environment it is very hard to predict failing banks as they are very rare, i.e. anomaly detection problem. There was a significant increase in the number of failed banks from 2009 to 2014 what produced enough data for the classification, after reducing dimensionality and creating comparable risk profiles.
+
+![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/all_banks.png) 
+
+Overall, 137 failed banks and 6,877 surviving banks were used in this machine learning exercise. Historical observations from the first 4 quarters ending 2010Q3 (`./data`) are used to tune the model and out-of-sample testing is performed on quarterly data starting from 2012Q4 (`./oos`).  For more information on methodology please refer to `CAMELS.md` file included in the repository, below is history of failed banks.
+
+![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/failed_banks.png)
 
 ## Project Set Up and Installation
 *OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
@@ -23,6 +31,8 @@ Selected financial ratios were used to produce unique risk profiles according to
 Financial metrics recorded in the last reports of the failed banks should have predictive power that is needed to forecast future failures. Due to significant class imbalances and taking into account costs accosiated with financial distress, the model should aim to maximize the recall score. In other words, accuracy is probably not the best metrics, as Type II error needs to be minimized.
 
 Basic benchmark model was created in order to better understand the requirements. Sklearn `traing-test-split` was used with `StandardScaler` to prepare for Gradient Boosting tree-based `GridSearch`, optimizing for recall. The resulting model performed reasonably well on the testing dataset with AUC of 0.97. Out-of-sample results were also very promising as recall scores  were ranging from 0.76 to 1. Out of 138 banks that failed during the period from 2010Q4 to 2012Q4 the benchmark model correctly flags 124 failed banks based solely on the information from their last CALL reports. With time the number of failed banks decreases sharply and so does predictive power of the model.
+
+1[](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/oos_GBM.png)
 
 ### Access
 *TODO*: Explain how you are accessing the data in your workspace.
