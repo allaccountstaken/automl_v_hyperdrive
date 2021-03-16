@@ -1,10 +1,10 @@
 # Early Warning Financial Distress Classification System
 
-In normal, non-stressed environment it is very hard to predict failing banks as they are very rare, i.e. anomaly detection problem. There was a significant increase in the number of failed banks from 2009 to 2014 what produced enough data for the classification. Additionally, it was also important to reduce dimensionality and creat comparable risk profiles.
+In normal, non-stressed environment, it is very hard to predict failing banks as it is a very rare event, i.e. anomaly detection problem. There was a significant increase in the number of failed banks from 2009 to 2014 what produced enough data for the classification. Additionally, it was also important to creat comparable risk profiles.
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/all_banks.png) 
 
-The primary objective is to develop an early warning system, i.e. binary classification of failed (`'Target'==1`) vs. survived (`'Target'==0`), for US banks using their quarterly filings with the regulator. Overall, 137 failed banks and 6,877 surviving banks were used in this machine learning exercise. Historical observations from the first 4 quarters ending 2010Q3 (`./data`) are used to tune the model and out-of-sample testing is performed on quarterly data starting from 2012Q4 (`./oos`).  For more information on methodology please refer to `CAMELS.md` file included in the repository, below is history of failed banks.
+The primary objective is to develop an early warning system, i.e. binary classification of failed (`'Target'==1`) vs. survived (`'Target'==0`), for US banks using their quarterly filings with the regulator. Overall, 137 failed banks and 6,877 surviving banks were used in this machine learning exercise. Historical observations from the first 4 quarters ending 2010Q3 (`./data`) are used to tune the model and out-of-sample testing is performed on quarterly data starting from 2012Q4 (`./oos`).  For more information on methodology please refer to `CAMELS.md` file included in the repository, below are annual failed banks counts.
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/failed_banks.png)
 
@@ -15,8 +15,23 @@ The primary objective is to develop an early warning system, i.e. binary classif
 
 ### Overview
 
-Approximately 2,000 preliminary features were obtained for every bank instance from "Report of Condition and Income" (CALL report) using publicly available SOAP APIs. Eventually, only 14 financial metrics were used for the actual classification. For more information about CALL reports please visit the regulator's website at https://cdr.ffiec.gov/public/ManageFacsimiles.aspx. More user friendly description is available here: https://www.investopedia.com/terms/c/callreport.asp
+Approximately 2,000 preliminary features were obtained for every bank instance from "Report of Condition and Income" (CALL report) using publicly available SOAP APIs on https://banks.data.fdic.gov/docs/.
 
+Eventually, only 14 financial metrics were used for the actual classification. For more information about CALL reports please visit the regulator's website at https://cdr.ffiec.gov/public/ManageFacsimiles.aspx. Detailed description is available here: https://www.investopedia.com/terms/c/callreport.asp
+`selected_features = {'RIAD3210' : 'Total equity capital', 
+                     'RCON2170' : 'Total assets', 
+                     'RCON3360' : 'Total loans',
+                     'RCON3465' : '1-4 family residential loans',
+                     'RCON3466' : 'Other real estate loans',
+                     'RCON3387' : 'Commercial and industrial loans',
+                     'RCONB561' : 'Credit cards',
+                     'RCON3123' : 'Allowance for loan losses',
+                     'RIAD4093' : 'Total noninterest expense', 
+                     'RIAD4300' : 'Net Income before',
+                     'RCON2215' : 'Total transaction deposits',
+                     'RCON2385' : 'Total nontransaction deposits',
+                     'RCON1773' : 'Available-for-sale Fair Value',
+                     'RIAD4150' : 'Number of full-time employees'}`
 
 ### Task
 
@@ -26,7 +41,7 @@ Financial metrics recorded in the last reports of the failed banks should have p
 
 Basic benchmark model was created in order to better understand the requirements. Sklearn `traing-test-split` was used with `StandardScaler` to prepare for Gradient Boosting tree-based `GridSearch`, optimizing for recall. The resulting model performed reasonably well on the testing dataset with AUC of 0.97. Out-of-sample results were also very promising as recall scores  were ranging from 0.76 to 1. Out of 138 banks that failed during the period from 2010Q4 to 2012Q4 the benchmark model correctly flags 124 failed banks based solely on the information from their last CALL reports. With time the number of failed banks decreases sharply and so does predictive power of the model.
 
-1[](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/oos_GBM.png)
+![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/oos_GBM.png)
 
 ### Access
 *TODO*: Explain how you are accessing the data in your workspace.
