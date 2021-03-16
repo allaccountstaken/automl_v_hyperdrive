@@ -1,7 +1,7 @@
-# CAMELS risk profiles
+# Creating Risk Profiles
 Note: this research presents preliminary findings and is being distributed to interested readers solely to stimulate discussion and elicit comments. 
 
-## CALL report
+## CALL Report
 Approximately 2,000 original  features were obtained for every bank instance from "Report of Condition and Income" (CALL report, example report is stored here `'data/CALL_175458.PDF'`) using publicly available SOAP APIs on https://banks.data.fdic.gov/docs/. Eventually, only 14 financial metrics were used for the actual classification:
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/selected_financials.png)
@@ -14,7 +14,7 @@ Distribution of selected financial ratios of failed banks:
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/weak_financials.png)
 
-## CAMELS framework
+## CAMELS Framework
 Although there was a lot of intra-class variability, these ratios were successfully used to produce comparable risk profiles according to CAMELS valuation framework. 
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/CAMELS_dimensions.png)
