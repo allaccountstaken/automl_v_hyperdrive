@@ -15,7 +15,7 @@ The primary objective is to develop an early warning system, i.e. binary classif
 
 ### Overview
 
-Approximately 2,000 preliminary features were obtained for every bank instance from "Report of Condition and Income" (CALL report) using publicly available SOAP APIs on https://banks.data.fdic.gov/docs/. Eventually, only 14 financial metrics were used for the actual classification. 
+Approximately 2,000 preliminary features were obtained for every bank instance from "Report of Condition and Income" (CALL report, example included here `'data/CALL_175458.PDF'`) using publicly available SOAP APIs on https://banks.data.fdic.gov/docs/. Eventually, only 14 financial metrics were used for the actual classification:
 
 
     `selected_features = {
@@ -38,7 +38,9 @@ For more information about CALL reports please visit the regulator's website at 
 
 ### Task
 
-Selected financial ratios were used to produce unique risk profiles according to CAMELS valuation framework, that is explaind in detail in suplemental `CAMELS.md`. This framework is used to assess performance along 6 risk dimensions, namely Capital, Assets, Management, Earnings, Liquidity, and Sensitivity to market risk. It was assumed that a failed bank will exceed its risk capacity along several diminsion and eventually would face a liquidity crises. For more information about CAMELS framework please visit the regulator's resource here https://www.fdic.gov/deposit/insurance/assessments/risk.html or an unofficial explanation here https://en.wikipedia.org/wiki/CAMELS_rating_system
+Selected financial ratios were used to produce unique risk profiles according to CAMELS valuation framework, that is explaind in detail in suplemental `CAMELS.md` file. This framework is used to assess performance along 6 risk dimensions, namely Capital, Assets, Management, Earnings, Liquidity, and Sensitivity to market risk. It was assumed that a failed bank will exceed its risk capacity along several diminsion and eventually would face a liquidity crises. 
+
+For more information about CAMELS framework please visit the regulator's resource here https://www.fdic.gov/deposit/insurance/assessments/risk.html or an unofficial explanation here https://en.wikipedia.org/wiki/CAMELS_rating_system
 
 Financial metrics recorded in the last reports of the failed banks should have predictive power that is needed to forecast future failures. Due to significant class imbalances and taking into account costs accosiated with financial distress, the model should aim to maximize the recall score. In other words, accuracy is probably not the best metrics, as Type II error needs to be minimized.
 
