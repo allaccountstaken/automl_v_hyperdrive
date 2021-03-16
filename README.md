@@ -1,6 +1,6 @@
 # Early Warning Financial Distress Classification System
 
-In normal, non-stressed environment, it is very hard to predict failing banks as it is a very rare event, i.e. anomaly detection problem. There was a significant increase in the number of failed banks from 2009 to 2014 what produced enough data for the classification. Additionally, it was also important to creat comparable risk profiles.
+In normal, non-stressed environment, it is very hard to predict failing banks as it is a very rare event equivalent of anomaly detection. There was a significant increase in the number of failed banks from 2009 to 2014 what produced enough data for effective classification. Additionally, it was also important to creat comparable risk profiles.
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/all_banks.png) 
 
