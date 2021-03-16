@@ -38,7 +38,7 @@ For more information about CALL reports please visit the regulator's website at 
 
 ### Task
 
-Selected financial ratios were used to produce unique risk profiles according to CAMELS valuation framework, that is explained in detail in supplemental `CAMELS.md` file. This framework is used to assess performance along 6 risk dimensions, namely Capital, Assets, Management, Earnings, Liquidity, and Sensitivity to market risk. It was assumed that a failed bank will exceed its risk capacity along several dimensions and eventually would face a liquidity crises. 
+Selected financial ratios were used to produce comparable risk profiles according to CAMELS valuation framework, that is explained in detail in supplemental `CAMELS.md` file. This framework is used to assess performance along 6 risk dimensions, namely Capital, Assets, Management, Earnings, Liquidity, and Sensitivity to market risk. It was assumed that a failed bank will exceed its risk capacity along several dimensions and eventually would face a liquidity crises. 
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/single_CAMELS.png)
 
