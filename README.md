@@ -1,30 +1,24 @@
 # Early Warning Financial Distress Classification System
 
-*TODO:* Write a short introduction to your project.
-
-The primary objective is to develop an early warning system, i.e. binary classification of failed (`'Target'==1`) vs. survived (`'Target'==0`), for US banks using their quarterly filings with the regulator. 
-
-In normal, non-stressed environment it is very hard to predict failing banks as they are very rare, i.e. anomaly detection problem. There was a significant increase in the number of failed banks from 2009 to 2014 what produced enough data for the classification, after reducing dimensionality and creating comparable risk profiles.
+In normal, non-stressed environment it is very hard to predict failing banks as they are very rare, i.e. anomaly detection problem. There was a significant increase in the number of failed banks from 2009 to 2014 what produced enough data for the classification. Additionally, it was also important to reduce dimensionality and creat comparable risk profiles.
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/all_banks.png) 
 
-Overall, 137 failed banks and 6,877 surviving banks were used in this machine learning exercise. Historical observations from the first 4 quarters ending 2010Q3 (`./data`) are used to tune the model and out-of-sample testing is performed on quarterly data starting from 2012Q4 (`./oos`).  For more information on methodology please refer to `CAMELS.md` file included in the repository, below is history of failed banks.
+The primary objective is to develop an early warning system, i.e. binary classification of failed (`'Target'==1`) vs. survived (`'Target'==0`), for US banks using their quarterly filings with the regulator. Overall, 137 failed banks and 6,877 surviving banks were used in this machine learning exercise. Historical observations from the first 4 quarters ending 2010Q3 (`./data`) are used to tune the model and out-of-sample testing is performed on quarterly data starting from 2012Q4 (`./oos`).  For more information on methodology please refer to `CAMELS.md` file included in the repository, below is history of failed banks.
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/failed_banks.png)
 
 ## Project Set Up and Installation
-*OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
+*OPTIONAL:* Explain how to set up this project in AzureML.
 
 ## Dataset
 
 ### Overview
-*TODO*: Explain about the data you are using and where you got it from.
 
 Approximately 2,000 preliminary features were obtained for every bank instance from "Report of Condition and Income" (CALL report) using publicly available SOAP APIs. Eventually, only 14 financial metrics were used for the actual classification. For more information about CALL reports please visit the regulator's website at https://cdr.ffiec.gov/public/ManageFacsimiles.aspx. More user friendly description is available here: https://www.investopedia.com/terms/c/callreport.asp
 
 
 ### Task
-*TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
 
 Selected financial ratios were used to produce unique risk profiles according to CAMELS valuation framework, that is explaind in detail in suplemental `CAMELS.md`. This framework is used to assess performance along 6 risk dimensions, namely Capital, Assets, Management, Earnings, Liquidity, and Sensitivity to market risk. It was assumed that a failed bank will exceed its risk capacity along several diminsion and eventually would face a liquidity crises. For more information about CAMELS framework please visit the regulator's resource here https://www.fdic.gov/deposit/insurance/assessments/risk.html or an unofficial explanation here https://en.wikipedia.org/wiki/CAMELS_rating_system
 
