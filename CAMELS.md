@@ -2,11 +2,7 @@
 Note: this research presents preliminary findings and is being distributed to interested readers solely to stimulate discussion and elicit comments. 
 
 ## CALL report
-Approximately 2,000 original  features were obtained for every bank instance from "Report of Condition and Income" (CALL report, example report is stored here `'data/CALL_175458.PDF'`) using publicly available SOAP APIs on https://banks.data.fdic.gov/docs/. 
-
-![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/data/CALL_175458.PDF)
-
-Eventually, only 14 financial metrics were used for the actual classification:
+Approximately 2,000 original  features were obtained for every bank instance from "Report of Condition and Income" (CALL report, example report is stored here `'data/CALL_175458.PDF'`) using publicly available SOAP APIs on https://banks.data.fdic.gov/docs/. Eventually, only 14 financial metrics were used for the actual classification:
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/selected_financials.png)
 
