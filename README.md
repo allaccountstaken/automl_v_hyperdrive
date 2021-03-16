@@ -4,7 +4,7 @@ In normal, non-stressed environment, it is very hard to predict failing banks as
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/all_banks.png) 
 
-The primary objective is to develop an early warning system, i.e. binary classification of failed (`'Target'==1`) vs. survived (`'Target'==0`), for US banks using their quarterly filings with the regulator. Overall, 137 failed banks and 6,877 surviving banks were used in this machine learning exercise. Historical observations from the first 4 quarters ending 2010Q3 (`./data`) are used to tune the model and out-of-sample testing is performed on quarterly data starting from 2012Q4 (`./oos`).  For more information on methodology please refer to `CAMELS.md` file included in the repository, below are annual failed banks counts.
+The primary objective is to develop an early warning system, i.e. binary classification of failed (`'Target'==1`) vs. survived (`'Target'==0`), for US banks using their quarterly filings with the regulator. Overall, 137 failed banks and 6,877 surviving banks were used in this machine learning exercise. Historical observations from the first 4 quarters ending 2010Q3 (`./data`) are used to tune the model and out-of-sample testing is performed on quarterly data starting from 2010Q4 (`./oos`).  For more information on methodology please refer to `CAMELS.md` file included in the repository, below are annual failed banks counts.
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/failed_banks.png)
 
