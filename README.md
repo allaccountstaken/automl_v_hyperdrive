@@ -1,6 +1,6 @@
 # Early Warning Financial Distress Classification System
 
-In normal, non-stressed environment, it is very hard to predict failing banks as it is a very rare event equivalent of anomaly detection. There was a significant increase in the number of failed banks from 2009 to 2014 what produced enough data for effective classification. Additionally, it was also important to creat comparable risk profiles. Below are counts of regulated banks, healthy in blue and failed in red.
+In normal, non-stressed environment, it is very hard to predict failing banks as it is a very rare event equivalent of anomaly detection. There was a significant increase in the number of failed banks from 2009 to 2014 what produced enough data for effective classification. Additionally, it was also important to creat comparable risk profiles. Below are annual counts of regulated banks, healthy in blue and failed in red.
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/all_banks.png) 
 
@@ -18,6 +18,7 @@ The primary objective is to develop an early warning system, i.e. binary classif
 Approximately 2,000 preliminary features were obtained for every bank instance from "Report of Condition and Income" (CALL report) using publicly available SOAP APIs on https://banks.data.fdic.gov/docs/.
 
 Eventually, only 14 financial metrics were used for the actual classification. For more information about CALL reports please visit the regulator's website at https://cdr.ffiec.gov/public/ManageFacsimiles.aspx. Detailed description is available here: https://www.investopedia.com/terms/c/callreport.asp
+
 `selected_features = {'RIAD3210' : 'Total equity capital', 
                      'RCON2170' : 'Total assets', 
                      'RCON3360' : 'Total loans',
@@ -32,6 +33,7 @@ Eventually, only 14 financial metrics were used for the actual classification. F
                      'RCON2385' : 'Total nontransaction deposits',
                      'RCON1773' : 'Available-for-sale Fair Value',
                      'RIAD4150' : 'Number of full-time employees'}`
+                     
 
 ### Task
 
