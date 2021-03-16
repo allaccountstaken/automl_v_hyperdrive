@@ -17,23 +17,25 @@ The primary objective is to develop an early warning system, i.e. binary classif
 
 Approximately 2,000 preliminary features were obtained for every bank instance from "Report of Condition and Income" (CALL report) using publicly available SOAP APIs on https://banks.data.fdic.gov/docs/.
 
-Eventually, only 14 financial metrics were used for the actual classification. For more information about CALL reports please visit the regulator's website at https://cdr.ffiec.gov/public/ManageFacsimiles.aspx. Detailed description is available here: https://www.investopedia.com/terms/c/callreport.asp
+Eventually, only 14 financial metrics were used for the actual classification. 
 
-`selected_features = {'RIAD3210' : 'Total equity capital', 
-                     'RCON2170' : 'Total assets', 
-                     'RCON3360' : 'Total loans',
-                     'RCON3465' : '1-4 family residential loans',
-                     'RCON3466' : 'Other real estate loans',
-                     'RCON3387' : 'Commercial and industrial loans',
-                     'RCONB561' : 'Credit cards',
-                     'RCON3123' : 'Allowance for loan losses',
-                     'RIAD4093' : 'Total noninterest expense', 
-                     'RIAD4300' : 'Net Income before',
-                     'RCON2215' : 'Total transaction deposits',
-                     'RCON2385' : 'Total nontransaction deposits',
-                     'RCON1773' : 'Available-for-sale Fair Value',
-                     'RIAD4150' : 'Number of full-time employees'}`
-                     
+                                        `selected_features = {'RIAD3210' : 'Total equity capital', 
+                                                             'RCON2170' : 'Total assets', 
+                                                             'RCON3360' : 'Total loans',
+                                                             'RCON3465' : '1-4 family residential loans',
+                                                             'RCON3466' : 'Other real estate loans',
+                                                             'RCON3387' : 'Commercial and industrial loans',
+                                                             'RCONB561' : 'Credit cards',
+                                                             'RCON3123' : 'Allowance for loan losses',
+                                                             'RIAD4093' : 'Total noninterest expense', 
+                                                             'RIAD4300' : 'Net Income before',
+                                                             'RCON2215' : 'Total transaction deposits',
+                                                             'RCON2385' : 'Total nontransaction deposits',
+                                                             'RCON1773' : 'Available-for-sale Fair Value',
+                                                             'RIAD4150' : 'Number of full-time employees'}`
+
+
+For more information about CALL reports please visit the regulator's website at https://cdr.ffiec.gov/public/ManageFacsimiles.aspx. Detailed description is available here: https://www.investopedia.com/terms/c/callreport.asp
 
 ### Task
 
