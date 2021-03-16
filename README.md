@@ -40,6 +40,8 @@ For more information about CALL reports please visit the regulator's website at 
 
 Selected financial ratios were used to produce unique risk profiles according to CAMELS valuation framework, that is explained in detail in supplemental `CAMELS.md` file. This framework is used to assess performance along 6 risk dimensions, namely Capital, Assets, Management, Earnings, Liquidity, and Sensitivity to market risk. It was assumed that a failed bank will exceed its risk capacity along several dimensions and eventually would face a liquidity crises. 
 
+![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/single_CAMELS.png)
+
 For more information about CAMELS framework please visit the regulator's resource here https://www.fdic.gov/deposit/insurance/assessments/risk.html or an unofficial explanation here https://en.wikipedia.org/wiki/CAMELS_rating_system
 
 Financial metrics recorded in the last reports of the failed banks should have predictive power that is needed to forecast future failures. Due to significant class imbalances and taking into account costs associated with financial distress, the model should aim to maximize the recall score. In other words, accuracy is probably not the best metrics, as Type II error needs to be minimized.
