@@ -1,5 +1,5 @@
 # Creating Risk Profiles
-Note: this research presents preliminary findings and is being distributed to interested readers solely to stimulate discussion and elicit comments. 
+In order to overcome limitations of extremely noise data, one had to approach this classification task similarly to anomaly detection problem. First, dimensionality reduction was performed on raw data. After that, comparable profiles were constructed using evaluation framework proposed by the regulator. 
 
 ## CALL Report
 Approximately 2,000 original  features were obtained for every bank instance from "Report of Condition and Income" (CALL report, example report is stored here `'data/CALL_175458.PDF'`) using publicly available SOAP APIs on https://banks.data.fdic.gov/docs/. Eventually, only 14 financial metrics were used for the actual classification:
