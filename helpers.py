@@ -2,6 +2,7 @@
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.metrics import recall_score
 from azureml.core.run import Run
 import pandas as pd
 import numpy as np
@@ -87,10 +88,13 @@ def main():
                                        max_depth=args.max_depth,
                                        random_state=123)
     model.fit(X_train_scaled, y_train)
+    y_pred = model.predict(X_test_scaled)
     
     # Report performance metrics of the trained model using testing subset
-    accuracy = model.score(X_test_scaled, y_test)
-    run.log("Accuracy", np.float(accuracy))
+    recall = recall_score(y_test, y_pred, average='binary')
+    run.log("Recall", np.round(np.float(recall), 5))
+    #accuracy = model.score(X_test_scaled, y_test) 
+    #run.log("Accuracy", np.float(accuracy))
 
 
     # The code below can be used to store the model for later consumption
