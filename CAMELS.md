@@ -35,10 +35,10 @@ Healthy banks manage to maintain their risk profile within the contour of their 
 
 For more information about CALL reports please visit the following resources:
 
-    -   regulator's website at https://cdr.ffiec.gov/public/ManageFacsimiles.aspx
-    -   detailed description is also available here https://www.investopedia.com/terms/c/callreport.asp
+-   regulator's website at https://cdr.ffiec.gov/public/ManageFacsimiles.aspx
+-   detailed description is also available here https://www.investopedia.com/terms/c/callreport.asp
 
 For more information about CAMELS framework please visit the following resources:
 
-    -   regulator's website at https://www.fdic.gov/deposit/insurance/assessments/risk.html 
-    -   datailed explanation is also available here https://en.wikipedia.org/wiki/CAMELS_rating_system.
+-   regulator's website at https://www.fdic.gov/deposit/insurance/assessments/risk.html 
+-   datailed explanation is also available here https://en.wikipedia.org/wiki/CAMELS_rating_system.
