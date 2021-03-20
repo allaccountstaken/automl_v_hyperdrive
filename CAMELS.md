@@ -23,7 +23,7 @@ The framework aims to assess performance along 6 risk dimensions, namely Capital
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/single_CAMELS.png)
 
-It was assumed that a failed bank will exceed its risk capacity along several dimensions and eventually would face a liquidity crises. For example, first (1) deteriorating asset quality will lead to (2) negative earnings. This will pierce capacity on (3) capital dimension and the bank may face (4) liquidity crisis. Below is multi-period evolution of a model failed bank.
+It was assumed that a failed bank will exceed its risk capacity, i. e. hypothetical outside contour, along several dimensions and eventually would face a liquidity crises. For example, first (1) deteriorating asset quality will lead to (2) negative earnings. This will pierce capacity on (3) capital dimension and the bank may face (4) liquidity crisis. Below is multi-period evolution of a model failed bank.
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/weak_CAMELS.png)
 
