@@ -66,6 +66,14 @@ Out-of-sample testing data covers 9 quarters starting in 2010Q4 and contains rep
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
+![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/imgs/Hyperdr_RunDetails.png)
+
+![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/imgs/Hyperdr_RunComplete.png)
+
+![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/imgs/Hyperdr_ChildRuns.png)
+
+![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/imgs/Hyperdr_BestModel.png)
+
 ## Model Deployment
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
 
