@@ -1,52 +1,40 @@
 # Early Warning Financial Distress Classification System
 
-In normal, non-stressed environment, it is very hard to predict failing banks as it is a very rare event equivalent of anomaly detection. There was a significant increase in the number of failed banks from 2009 to 2014 what produced enough data for effective classification. Additionally, it was also important to create comparable risk profiles. Below are annual counts of regulated banks, healthy in blue and failed in red.
+In normal, non-stressed environment, it is very hard to predict bank's failure as it is a very rare event equivalent of anomaly detection; for more information please visit https://www.bankrate.com/banking/list-of-failed-banks/. There was a significant increase in the number of failed banks in the US from 2009 to 2014 what produced enough data for effective classification. Notwithstanding the spike in failures, it was still necessary to create comparable risk profiles. Below are annual counts of regulated banks, healthy in blue and failed in red.
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/all_banks.png) 
 
-The primary objective was to develop an early warning system, i.e. binary classification of failed (`'Target'==1`) vs. survived (`'Target'==0`), for US banks using their quarterly filings with the regulator. Overall, 137 failed banks and 6,877 surviving banks were used in this machine learning exercise. Historical observations from the first 4 quarters ending 2010Q3 ( stored in `./data`) are used to tune the model and out-of-sample testing is performed on quarterly data starting from 2010Q4 ( stored in `./oos`).  For more information on methodology please refer to supplemental `CAMELS.md` file included in the repository, below are annual failed banks counts.
+The primary objective was to develop an early warning system, i.e. binary classification of failed (`'Target'==1`) vs. survived (`'Target'==0`), for the US banks using their quarterly filings with the regulator. Overall, 137 failed banks and 6,877 surviving banks were used in this machine learning exercise. Historical observations from the first 4 quarters ending 2010Q3 (stored in `./data`) are used to tune the model and out-of-sample testing is performed on quarterly data starting from 2010Q4 (stored in `./oos`).  For more information on methodology please refer to supplemental `CAMELS.md` file included in the repository. Below are annual failures showing a clear increase in counts.
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/failed_banks.png)
-
-## Project Set Up and Installation
-*OPTIONAL:* Explain how to set up this project in AzureML.
 
 ## Dataset
 
 ### Overview
 
-Approximately 2,000 original features were obtained for every bank instance from "Report of Condition and Income" (CALL report, example report is stored here `'data/CALL_175458.PDF'`) using publicly available SOAP APIs on https://banks.data.fdic.gov/docs/. Eventually, only 14 financial metrics were used for the actual classification:
+Approximately 2,000 original features were obtained for every bank instance from "Report of Condition and Income" (CALL report) using publicly available APIs at https://banks.data.fdic.gov/docs/. Sample report is available here `'data/CALL_175458.PDF'`. Eventually, only 14 financial metrics were used for the actual classification:
 
+![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/selected_financials.png)
 
-    `selected_features = {
-        'RIAD3210' : 'Total equity capital', 
-        'RCON2170' : 'Total assets', 
-        'RCON3360' : 'Total loans', 
-        'RCON3465' : '1-4 family residential loans', 
-        'RCON3466' : 'Other real estate loans', 
-        'RCON3387' : 'Commercial and industrial loans',
-        'RCONB561' : 'Credit cards', 
-        'RCON3123' : 'Allowance for loan losses',
-        'RIAD4093' : 'Total noninterest expense', 
-        'RIAD4300' : 'Net Income before',
-        'RCON2215' : 'Total transaction deposits', 
-        'RCON2385' : 'Total nontransaction deposits', 
-        'RCON1773' : 'Available-for-sale Fair Value',
-        'RIAD4150' : 'Number of full-time employees' }`
+For more information about CALL reports please visit the following resources:
 
-For more information about CALL reports please visit the regulator's website at https://cdr.ffiec.gov/public/ManageFacsimiles.aspx. Detailed description is available here: https://www.investopedia.com/terms/c/callreport.asp
+-   regulator's website at https://cdr.ffiec.gov/public/ManageFacsimiles.aspx
+-   detailed description is also available here https://www.investopedia.com/terms/c/callreport.asp
 
 ### Task
 
-Selected financial ratios were used to produce comparable risk profiles according to CAMELS valuation framework, that is explained in detail in supplemental `CAMELS.md` file. This framework is used to assess performance along 6 risk dimensions, namely Capital, Assets, Management, Earnings, Liquidity, and Sensitivity to market risk. It was assumed that a failed bank will exceed its risk capacity along several dimensions and eventually would face a liquidity crises. 
+Selected financial ratios were used to produce comparable risk profiles according to CAMELS valuation framework, that is explained in detail in supplemental `CAMELS.md` file. For more information about CAMELS framework please visit the following resources:
+
+ -   regulator's website at https://www.fdic.gov/deposit/insurance/assessments/risk.html 
+ -   datailed explanation is also available here https://en.wikipedia.org/wiki/CAMELS_rating_system.
+
+This framework can be used to assess performance along six risk dimensions: 1) Capital, 2) Assets, 3) Management, 4) Earnings, 5) Liquidity, and 6) Sensitivity to market risk. It was assumed that a failed bank will exceed its risk capacity, i. e. hypothetical outside contour, along several dimensions and eventually would face a liquidity crises. 
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/single_CAMELS.png)
 
-For more information about CAMELS framework please visit the regulator's resource here https://www.fdic.gov/deposit/insurance/assessments/risk.html or an unofficial explanation here https://en.wikipedia.org/wiki/CAMELS_rating_system
-
 Financial metrics recorded in the last reports of the failed banks should have predictive power that is needed to forecast future failures. Due to significant class imbalances and taking into account costs associated with financial distress, the model should aim to maximize the recall score. In other words, accuracy is probably not the best metrics, as Type II error needs to be minimized.
 
-Basic benchmark model was created in order to better understand the requirements. Sklearn `train-test-split` was used with `StandardScaler` to prepare for Gradient Boosting tree-based `GridSearch`, optimizing for recall. The resulting model performed reasonably well on the testing dataset with AUC of 0.97. Out-of-sample results were also very promising as recall scores  were ranging from 0.76 to 1. Out of 138 banks that failed during the period from 2010Q4 to 2012Q4 the benchmark model correctly flags 124 failed banks based solely on the information from their last CALL reports. With time the number of failed banks decreases sharply and so does predictive power of the model.
+Basic benchmark model was created in order to better understand the requirements. Sklearn `train-test-split` was used with `StandardScaler` to prepare for Gradient Boosting tree-based `GridSearch`, optimizing for recall. The trained model performed reasonably well on the testing dataset with AUC of 0.97. Out-of-sample results were also very promising as recall scores  were ranging from 0.76 to 1. Out of 138 banks that failed during the period from 2010Q4 to 2012Q4 the benchmark model correctly flags 124 failed banks based solely on the information from their last CALL reports. With time the number of failed banks decreases sharply and so does predictive power of the model.
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/plots/oos_GBM.png)
 
