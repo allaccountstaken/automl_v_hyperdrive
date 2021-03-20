@@ -6,14 +6,14 @@ from azureml.core.run import Run
 import pandas as pd
 import numpy as np
 import argparse
+import joblib
 import os
 
 
-if __name__ == '__main__':
-    main()
 
 
-def load_data(file_path='data/camel_data_after2010Q3.csv'):
+
+def load_data(file_path):
 
     '''
         Returns a DataFrame with bank instances and CAMELS features as columns.
@@ -39,7 +39,7 @@ def clean_data(df):
         Returns:
         X features and reshaped y target vector
         '''
-
+    pd.set_option('use_inf_as_na', True)
     df.dropna(inplace=True)
     X = df[['EQTA', 'EQTL', 'LLRTA', 'LLRGL', 'OEXTA', 'INCEMP', 'ROA', 'ROE', 'TDTL', 'TDTA', 'TATA']].copy()
     y = df['Target'].values.reshape(-1, 1)
@@ -52,12 +52,13 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--learning_rate', type=float, default=0.1, help="Inverse of regularization strength. Smaller values cause stronger regularization")
     parser.add_argument('--n_estimators', type=int, default=20, help="Maximum number of iterations to converge, similar to max_iter in Logistic Regression")
-    parser.add_argument('--max_features', type=float, default=5, help="Number of features to consider in one pass, i.e. how large could the tree grow")
+    parser.add_argument('--max_features', type=int, default=5, help="Number of features to consider in one pass, i.e. how large could the tree grow")
     parser.add_argument('--max_depth', type=int, default=2, help="Maximum number of splits, i.e. how bushy could the tree grow")
     args = parser.parse_args()
     
     # Prepare the dataset to match the expected format
-    ds = load_data()
+    path = 'https://raw.githubusercontent.com/allaccountstaken/automl_v_hyperdrive/main/data/camel_data_after2010Q3.csv'
+    ds = load_data(path)
     X, y = clean_data(ds)
     #Consider for internal datasets:
     #from azureml.data.dataset_factory import TabularDatasetFactory
@@ -96,7 +97,8 @@ def main():
     #os.makedirs("outputs", exist_ok=True)
     #joblib.dump(value=model, './outputs/model.joblib')
 
-
+if __name__ == '__main__':
+    main()
 
 
 
