@@ -69,21 +69,17 @@ The best model produced norm_macro_recall of 0.74:
          'Max tree depth:': 3,
          'norm_macro_recall': 0.74286}
 
-Further improvements could include performing 4 or more concurrent runs, as well as removing data wrangling functionality from the training script, `helpers.py`.
-
-
-Below are screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+Further improvements could include performing 4 or more concurrent runs, as well as removing data wrangling functionality from the training script, `helpers.py`. Below are screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/imgs/Hyperdr_RunDetails.png)
-
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/imgs/Hyperdr_RunComplete.png)
-
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/imgs/Hyperdr_BestModelParams.png)
 
 
 ## Automated ML
 For the experiments in this section it was decided to run from workspace blob storage; obviously the same dataset:
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/imgs/Automl_dataset.png)
+
 As discussed above, achieving good recall score was the main goal and this is why `'norm_macro_recall'` was chosen as a primary metric. Timeout and number of concurrent iterations were set conservatively to control the costs.
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/imgs/Automl_Config.png)
 
@@ -108,7 +104,7 @@ Here are additional details of the best model, `VotingEnsemble`:
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/imgs/Automl_VotingEnsemble2.png)
 
 ## Model Deployment
-`VotingEnsemble` model tuned using automated machine learning was selected for deployment. The model `automl_model.pkl` was saved and registered first.
+The `VotingEnsemble` model tuned using automated machine learning achieved macro-recall of 0.94 and was selected for deployment. The model `automl_model.pkl` was saved and registered first.
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/imgs/Automl_DeplCode.png) 
 
 Successful deployment was confirmed here:
