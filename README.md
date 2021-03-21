@@ -121,9 +121,4 @@ Testing for Positive and Negative instances was performed; details are in automa
 ![](https://github.com/allaccountstaken/automl_v_hyperdrive/blob/main/imgs/Automl_TestingNeg.png)
 
 ## Screen Recording
-Link to a screen recording of the project in action. Remember that the screencast should demonstrate:
-
-- A working model
-- Demo of the deployed  model
-- Demo of a sample request sent to the endpoint and its response
-
+Link to a screen recording of the project in action: https://youtu.be/Zw0MDvXIGHQ- 
